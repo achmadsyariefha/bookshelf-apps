@@ -5,6 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBook.addEventListener("submit", function (event){
         event.preventDefault();
         addBookList();
-    })
+    });
 
-})
+    if (isStorageExist()) {
+        loadDataFromStorage();
+    }
+
+});
+
+
+document.addEventListener("ondatasaved", () => {
+    console.log("Data berhasil disimpan.");
+});
+
+document.addEventListener("ondataloaded", () => {
+    refreshDatafromBookshelf();
+});
