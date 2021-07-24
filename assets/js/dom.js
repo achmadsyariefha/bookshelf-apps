@@ -27,6 +27,25 @@ function addBookList(){
 
 }
 
+const searchButton = document.getElementById("searchSubmit");
+searchButton.addEventListener("click", (event) => {
+    const searchBookTitle = document.getElementById("searchBookTitle").value;
+    const searchBookList = document.querySelectorAll("article");
+
+    for (title of searchBookList) {
+        const book = title.childNodes[0].innerText.toLowerCase();
+
+         if (book.indexOf(searchBookTitle) != -1) {
+            title.style.display = "";
+            console.log("Proses berhasil");
+        } else {
+            title.style.display = "none";
+        }
+    }
+
+    event.preventDefault();
+});
+
 function makeBookList(data, author, year, isComplete) {
     
     const textBookTitle = document.createElement("h3");
